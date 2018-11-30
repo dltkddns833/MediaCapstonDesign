@@ -1,0 +1,20 @@
+<div class="canvas-container">
+    <div style="border: 3px solid; width: 500px; height: 300px;">
+        <canvas width="500" height="300" id="canvas" drawing></canvas>
+        
+    </div>
+    <div class="canvas-list">
+        <label>Color</label>
+        <color-picker ng-model="myColor" options="options" api="api" event-api="eventApi"></color-picker>
+        <br>
+        <label>Line width</label>
+        <div class="input-group">
+            <input type="text" class="form-control" ng-model="canvas_lineWidth;" placeholder="">
+        </div>
+        <br>
+        <button class="btn btn-default" ng-click="onclickResetbutton()">Reset</button>
+        <a id="download" download="image.jpg"><button class="btn btn-default" ng-click="onclickSavebutton()">Save</button></a>
+    </div>
+</div>
+<br>
+<br>

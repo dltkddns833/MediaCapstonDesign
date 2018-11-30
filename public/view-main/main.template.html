@@ -1,0 +1,183 @@
+<nav class="navbar navbar-fixed-top">
+    <div class="contianer-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#!/main">Media Capston Design</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="text-white text-right bold"><a class="cursor" ng-click="gotoAnchor('search')">Search</a></li>
+                <li class="text-white text-right bold"><a class="cursor" ng-click="gotoAnchor('howto')">How to use</a></li>
+                <li class="text-white text-right bold"><a class="cursor" ng-click="gotoAnchor('explain')">Explanation</a></li>
+                <li class="text-white text-right bold"><img class="img-circle cursor" ng-click="gotoAnchor('contact')" src="../image/me.jpg" width="30px" height="30px"/></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="alert">
+    <div uib-alert ng-repeat="alert in $ctrl.alerts" ng-class="'alert-' + (alert.type || 'warning')" close="$ctrl.closeAlert($index)" dismiss-on-timeout="2000">{{alert.msg}}</div>
+</div>
+<div id="search" class="main-wrapper wrapper">
+    <div class="main-image-logo"></div>
+    <div class="main-input input-group">
+        <input type="text" class="form-control" ng-model="search.q" placeholder="이미지 키워드를 입력해주세요!">
+        <span class="input-group-btn">
+            <button ng-if="$ctrl.isSearching == false" class="btn btn-default" type="button" ng-click="$ctrl.onClicksearch(search.q)" >검색</button>
+            <button ng-if="$ctrl.isSearching == true" class="btn btn-default spinner-container" type="button" disabled><span class="btn-spinner"></span></button>
+        </span>
+    </div>
+    <div  ng-if="$ctrl.item_data.length > 0" class="main-list-button">
+        <p ng-if="$ctrl.isCompleteSearchBottle == true"><span><img src="../image/spinner.gif" style="width : 24px;"/></span>벡터 변환중...</p>
+        <button class="btn btn-danger" ng-click="$ctrl.onClickDelete()">이미지 전체삭제</button>
+        <button class="btn btn-info" ng-click="$ctrl.onClickCanvas()">그림판 <span ng-if="!$ctrl.isShowCanvas">보이기</span><span ng-if="$ctrl.isShowCanvas">숨기기</span></button>
+    </div>
+
+
+    <canvas-directive ng-if="$ctrl.isShowCanvas == true"></canvas-directive>
+    <div class="btn-tensorflow">
+        <button class="btn btn-default" ng-if="$ctrl.isShowCanvas == true && $ctrl.isCompleteSearchBottle == false" ng-click="$ctrl.onClickTensorflowSubmit()">유사 이미지 찾기</button>
+        <button class="btn btn-default" ng-if="$ctrl.isShowCanvas == true && $ctrl.isCompleteSearchBottle == true" disabled>유사 이미지 찾기</button>
+        <p ng-if="$ctrl.isCompleteCanvasBottle"><img src="../image/spinner.gif" style="width : 24px;"/></span>잠시만 기다려주세요...</p>
+    </div>
+    <div class="main-search-item" ng-if="!$ctrl.isShowReitem">
+        <div class="row" ng-repeat="list in  $ctrl.item_data track by $index" ng-if="$index % 4 == 0">
+            <div class="col-md-3 letter-box" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]" back-img="{{$ctrl.item_data[i]}}" ng-if="$ctrl.item_data[i] != null"></div>
+        </div>
+    </div>
+    <div  class="main-search-item" ng-if="$ctrl.isShowReitem">
+        <div class="row" ng-repeat="list in  $ctrl.reitem_data track by $index" ng-if="$index % 4 == 0">
+            <div class="col-md-3 letter-box" ng-repeat="i in [$index, $index + 1, $index + 2, $index + 3]" back-img="{{$ctrl.reitem_data[i]}}" ng-if="$ctrl.reitem_data[i] != null">
+                <label class="label label-default">{{$ctrl.reitem_data_value[$index]}}</label>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="howto" class="howto-wrapper">
+    <div class="howto-header">
+        <h1>How To Use?</h1>
+        <h4>자신이 원하는 이미지를 그림을 그려 찾으세요!</h4>
+    </div>
+
+    <div class="howto-container">
+        <h2>STEP 1 <span><span class="highlight" ng-class="{'showHigh' : $ctrl.showHighlight}">키워드</span>를 입력하고 검색하세요!</span></h2>
+        <hr>
+        <div class="howto-contents">
+            <div>
+                <img class="howto-gif" src="../image/step1.gif"/>
+            </div>
+            <div>
+                <p>1) 찾고자 하는 <span class="highlight" ng-class="{'showHigh' : $ctrl.showHighlight}">검색어</span>를 입력하고 검색 버튼을 클릭해주세요.</p>
+                <p>2) 조금만 기다려주세요!(Google Image Crawling을 하기 때문에 다소 시간이 걸릴 수 있습니다.)</p>
+                <p>3) 검색에서 나온 <span class="highlight" ng-class="{'showHigh' : $ctrl.showHighlight}">80장의 이미지</span>를 확인해 주세요.</p>
+                
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="howto-container">
+        <h2>STEP 2 <span><span class="highlight" ng-class="{'showHigh' : $ctrl.showHighlight}">그림</span>을 그리세요!</span></h2>
+        <hr>
+        <div class="howto-contents">
+            <div>
+                <p>1) 오른쪽 <span class="highlight" ng-class="{'showHigh' : $ctrl.showHighlight}">그림판 보이기</span> 버튼을 클릭하고 그림판을 띄우세요.</p>
+                <p>2) 펜 색과 굵기를 조정하여 간단한 그림을 그리세요.</p>
+                <p>3) 그림을 다 그리셨다면 <span class="highlight" ng-class="{'showHigh' : $ctrl.showHighlight}">Save</span> 버튼을 꼭 눌러주세요!</p>
+                <p>4) 그린 그림이 마음에 들지 않다면 Reset 버튼을 눌러주세요.</p>
+                <p>5) 오른쪽 버튼 그룹 옆에 '벡터 변환중' 메세지가 있다면 잠시만 기다려주세요. 기존 80장의 이미지를 벡터화 중입니다.</p>
+            </div>
+            <div>
+                <img class="howto-gif" src="../image/step2.gif"/>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="howto-container">
+        <h2>STEP 3 <span>재정렬된 이미지를 확인하세요!</span></h2>
+        <hr>
+        <div class="howto-contents">
+            <div>
+                <img class="howto-gif" src="../image/step3.gif"/>
+            </div>
+            <div>
+                <p>1) <span class="highlight" ng-class="{'showHigh' : $ctrl.showHighlight}">유사 이미지 찾기</span> 버튼을 눌러주세요!</p>
+                <p>2) 조금만 기다리면 내가 그린 그림과 비교하여 유사도가 높은 순으로 재정렬 됩니다.</p>
+                <p>3) 그림을 다시그려 재정렬을 할 수 있습니다.</p>
+                
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+
+<div id="explain" class="explain-wrapper">
+    <div class="explain-header">
+        <h1>Search For Images By Paint</h1>
+        <h4>사용자가 직접 그린 간단한 그림으로 이미지 2차 검색</h4>
+    </div>
+
+    <div class="explain-contents explain-step3" ng-mouseover="ex_step3 = true" ng-mouseleave="ex_step3 = false" ng-init="ex_step3 = false">
+        <div class="explain-text" ng-show="ex_step3">
+            <h2>Conclusion</h2>
+            <p>간단한 선형적 그림으로 형태가 유사한 이미지를 검색 할 수 있습니다.</p>
+            <p>벡터의 연산을 통해서 이미지의 유사도를 알 수 있습니다.</p>
+            <p>베교적 간단하게 사용할 수 있는 Tensorflow 엔진을 웹 어플리케이션에 <br>적용할 수 있습니다.</p>
+        </div>
+        <div class="explain-dark" ng-show="ex_step3"></div>
+    </div>
+    
+    <div class="explain-contents explain-step1" ng-mouseover="ex_step1 = true" ng-mouseleave="ex_step1 = false" ng-init="ex_step1 = false">
+        <div class="explain-text" ng-show="ex_step1">
+            <h2>이미지 1차 검색</h2>
+            <p>사용자가 필요한 이미지의 키워드를 입력, Python 프로그램을 사용하여 Google에서 Parsing을 합니다.</p>
+            <p>Parsing이 완료되면 80장의 이미지가 자동 다운로드 되어 저장되며 1차 검색이 완료됩니다.</p>
+        </div>
+        <div class="explain-dark" ng-show="ex_step1"></div>
+    </div>
+
+    <div class="explain-contents explain-step2" ng-mouseover="ex_step2 = true" ng-mouseleave="ex_step2 = false" ng-init="ex_step2 = false">
+        <div class="explain-text" ng-show="ex_step2">
+            <h2>이미지 벡터화 및 재정렬</h2>
+            <p>다운로드 된 80장의 이미지와 사용자가 직접 그린 이미지를 Tensorflow 엔진을 통해 Retrain 합니다.</p>
+            <p>Retrain으로 부터 얻으 각각의 이미지 벡터 파일들과 직접 그린 이미지의 벡터를 거리계산하여 유사도를 측정합니다.</p>
+            <p>측정된 유사도 값을 NodeJS를 통해 클라이언트에 전송되어 유사도가 가장 높은 순으로 재정렬 합니다.</p>
+        </div>
+        <div class="explain-dark" ng-show="ex_step2"></div>
+    </div>
+</div>
+
+
+<div id="contact" class="contact-wrapper">
+    <div class="contact-header">
+        <h1>Contact</h1>
+        <div class="contact-contents">
+            <div class="contact-infor">
+                <h4>이상운(Sang Wun Lee)</h4>
+                <p>서울과학기술대학교 <br>전자IT미디어공학과 12학번</p>
+                <p>웹 어프리케이션 풀스택 개발자</p>
+                <p>Tel : 01047851712</p>
+                <p>Mail : dltkddns833@naver.com</p>
+                <p>GitHub : https://github.com/dltkddns833</p>
+            </div>
+            <div class="contact-portfolio">
+                <h4>Portfolio</h4>
+                <div>
+                    <div>
+                        <div class="contact-mufeat"></div>
+                        <h5>Mufeat</h5>
+                    </div>
+                    <div>
+                        <div class="contact-fancyblog"></div>
+                        <h5>FancyBlog</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

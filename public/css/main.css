@@ -1,0 +1,273 @@
+.main-wrapper{
+    padding: 115px 0;
+    position: relative;
+}
+
+.main-image-logo{
+    background-image: url('../image/symbol_logo.png');
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.main-input{
+    width: 30%;
+    margin: 40px auto;
+}
+
+.main-input .spinner-container{
+    background-image: url('../image/spinner.gif');
+    background-position: center;
+    padding: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.main-list-button{
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+}
+
+.main-list-button > p{
+    font-weight: bold;
+}
+
+.main-list-button > * {
+    margin-left: 4px;
+}
+
+.btn-tensorflow{
+    position: absolute;
+    right: 25.3%;
+    top: 10.5%;
+}
+
+.btn-tensorflow > p{
+    margin-right: -24px;
+    margin-top: 10px;
+}
+
+.btn-spinner{
+    width: 54px;
+    height: 32px;
+    display: block;
+}
+
+.main-search-item{
+    margin-top: 50px;
+    text-align: left;
+}
+
+
+/* Canvas */
+.canvas-container{
+    display: flex;
+    justify-content: center;
+    text-align: left;
+}
+
+.canvas-list{
+    margin-left: 40px;
+}
+
+
+/* Howto */
+.howto-header{
+    color: #ffffff;
+    background-color: #001f5f;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.howto-header h1{
+    font-size: 52px;
+}
+
+.howto-gif{
+    width: 600px;
+    height: 400px;
+}
+
+.howto-container{
+    width: 70%;
+    margin: 36px auto;
+}
+
+.howto-container > h2{
+    font-weight: bold;
+}
+
+.howto-container > h2 > span {
+    font-weight: initial;
+    font-size: 24px;
+    margin: 0 8px;
+}
+
+.howto-contents{
+    display: flex;
+}
+
+.howto-contents > div{
+    margin: 0 8px;
+}
+
+.howto-contents > div > p{
+    font-size: 18px;
+    margin: 24px 8px;
+}
+
+/* explain */
+.explain-wrapper{
+    position: relative;
+    height: 1000px;
+}
+.explain-header{
+    color: #ffffff;
+    background-color: #b90005;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.explain-contents{
+    position: absolute;
+    z-index: 1;
+}
+
+
+.explain-contents.explain-step1{
+    width: 500px;
+    height: 400px;
+    top: 188px;
+    left: 440px;
+    background-image: url('../image/python.png');
+    background-position: center;
+    background-size: contain;
+    animation-name: step1;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+.explain-contents.explain-step2{
+    width: 800px;
+    height: 400px;
+    top: 500px;
+    left: 340px;
+    background-image: url('../image/tensorflow.jpg');
+    background-position: center;
+    background-size: contain;
+    animation-name: step2;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+}
+.explain-contents.explain-step3{
+    width: 500px;
+    height: 600px;
+    top: 246px;
+    right: 360px;
+    background-image: url('../image/nodeJS.jpg');
+    background-position: center;
+    background-size: contain;
+    animation-name: step3;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.explain-contents.explain-step3:hover{
+    animation-name: unset;
+    z-index: 99;
+}
+.explain-contents.explain-step2:hover{
+    animation-name: unset;
+    z-index: 99;
+}
+.explain-contents.explain-step1:hover{
+    animation-name: unset;
+    z-index: 99;
+}
+
+.explain-contents .explain-dark{
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .5;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+@keyframes step3{
+    from{top:246px;}
+    50%{top : 250px;}
+    to{top: 246px;}
+}
+@keyframes step2{
+    from{background-image: url('../image/tensorflow.jpg')}
+    50%{background-image: url('../image/tensorflow_change.jpg')}
+    to{background-image: url('../image/tensorflow.jpg')}
+}
+@keyframes step1{
+    from{top:188px;}
+    50%{top : 200px;}
+    to{top: 188px;}
+}
+
+.explain-text{
+    margin: 48px 24px;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.explain-text h2{
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+/* Contact */
+.contact-header{
+    color: #ffffff;
+    background-color: #323232;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.contact-contents{
+    text-align: left;
+    width: 40%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.contact-infor{
+    flex: 1;
+}
+
+.contact-portfolio{
+    flex: 2;
+    text-align: center;
+}
+
+.contact-portfolio > div{
+    display: flex;
+    justify-content: space-around;
+}
+
+.contact-mufeat{
+    width: 150px;
+    height: 150px;
+    background-image: url('../image/mufeat.PNG');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 6px solid gray;
+}
+.contact-fancyblog{
+    width: 150px;
+    height: 150px;
+    background-image: url('../image/fancyblog.PNG');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 83%;
+    border: 6px solid gray;
+}

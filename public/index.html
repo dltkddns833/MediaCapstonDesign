@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="Myapp">
+    <head lang="en" >
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="bower_component/angularjs-color-picker/dist/angularjs-color-picker.min.css"/>
+        <link rel="stylesheet" href="bower_component/angularjs-color-picker/dist/themes/angularjs-color-picker-bootstrap.min.css"/>
+        <!--CSS-->
+        <link rel="stylesheet" href="./css/entire.css"/>
+        <link rel="stylesheet" href="./css/main.css"/>
+    </head>
+    <body>
+        <!-- <nav class="navbar navbar-fixed-top">
+            <div class="contianer-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#!/main">Media Capston Design</a>
+                </div>
+                <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="text-white text-right bold"><a ng-click="gotoAnchor('search')">Search</a></li>
+                        <li class="text-white text-right bold"><a ng-click="gotoAnchor('howto')">How to use</a></li>
+                        <li class="text-white text-right bold"><a href="#!">Contact</a></li>
+                        <li class="text-white text-right bold"><img class="img-circle" src="http://placehold.it/30x30"/></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav> -->
+        <div>
+            <div ng-view></div>
+        </div>
+    </body>
+
+    <!-- Bower component -->
+    <script src="bower_component/jquery/dist/jquery.min.js"></script>
+    <script src="bower_component/angular/angular.js"></script>
+    <script src="bower_component/angular-resource/angular-resource.js"></script>
+    <script src="bower_component/angular-route/angular-route.js"></script>
+    <script src="bower_component/tinycolor2/dist/tinycolor-min.js"></script>
+    <script src="bower_component/angularjs-color-picker/dist/angularjs-color-picker.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+    <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="http://hongru.github.io/proj/canvas2image/canvas2image.js"></script>
+    <!-- <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script> -->
+    <script src="js/ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <script src="Myapp.js"></script>
+
+    <!--Component-->
+    <script src="view-main/main.component.js"></script>
+    <script src="capston-canvas/capstonCanvas.component.js"></script>
+    <script src="back-img/backImg.component.js"></script>
+
+
+    <!-- Service -->
+    <script src="core/core.js"></script>
+    <script src="core/capstonshared.js"></script>
+    <script src="core/cpastonrestapi.js"></script>
+
+    <!-- Module -->
+</html>

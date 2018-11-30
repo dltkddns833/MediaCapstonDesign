@@ -1,0 +1,48 @@
+.wrapper{
+    margin: 0 auto;
+    margin-top: 60px;
+    width: 80%;
+    text-align: center;
+}
+
+.navbar{
+    background-color: #323232 !important;
+    padding-right: 80px;
+}
+
+
+.nav>li>a:focus, .nav>li>a:hover{
+    background-color: unset;
+}
+
+.navbar a{
+    color: #ffffff;
+}
+
+.navbar-nav .img-circle{
+    margin-top: 11px;
+    margin-right: -44px;
+    margin-left: 16px;
+}
+
+.highlight{
+    padding: 2px 4px;
+    background: linear-gradient(to right, yellow 50%, white 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all .5s;
+}
+
+.highlight.showHigh{
+    background-position: left bottom;
+}
+
+.alert{
+    width: 20%;
+    position: fixed;
+    right: 0;
+}
+
+.cursor{
+    cursor: pointer;
+}
